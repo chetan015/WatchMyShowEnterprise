@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Watch My Show</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"></link>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"></link>
+
+
+    </h:head>
+    <h:body>
+        <nav class="navbar text-white bg-primary justify-content-between">
+            <span class="navbar-brand mb-0 h1">WatchMyShow</span>
+            <div class="d-flex flex-row align-items-center">
+                <p><strong>Welcome Chetan</strong></p>
+                <p> <a class="btn btn-transparent border-light text-white btn-sm" href="#" style="margin-left:5px">Logout</a> </p>
+            </div>
+        </nav>
+        <div class="container text-center">
+            <h3 class="display-4 m-4 text-primary">Your Subscriptions</h3>
+            <h:dataTable id="contentTable" value = "#{contentManagedBean.subscribedContents}" var = "subscribedContents">
+
+                <h:column>    				
+                    <f:facet name = "header">Id</f:facet>    				
+                        #{subscribedContents.id}
+                </h:column>
+                <h:column>    				
+                    <f:facet name = "header">Name</f:facet>    				
+                        #{subscribedContents.name}
+                </h:column>
+
+                <h:column>
+                    <f:facet name = "header">Genre</f:facet>
+                        #{subscribedContents.genre}
+                </h:column>
+                <h:column>    				
+                    <f:facet name = "header">Type</f:facet>    				
+                        #{subscribedContents.type}
+                </h:column>
+                <h:column>
+                    <f:facet name = "header">Rating</f:facet>
+                        #{subscribedContents.rating}
+                </h:column>
+
+            </h:dataTable>
+
+            
+        </div>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>    
+        <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script>
+        <script>$(document).ready(function () {
+                $('#contentTable').DataTable();
+            });
+        </script>
+    </h:body>
+</html>

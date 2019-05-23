@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Watch My Show</title>
+        <link rel="stylesheet" 
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"></link>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"></link>
+
+
+    </h:head>
+    <h:body>
+        <nav class="navbar text-white bg-primary justify-content-between">
+            <span class="navbar-brand mb-0 h1">WatchMyShow</span>
+            <div class="d-flex flex-row align-items-center">
+                <p><strong>Welcome Chetan</strong></p>
+                <p> <a class="btn btn-transparent border-light text-white btn-sm" href="#" style="margin-left:5px">Logout</a> </p>
+            </div>
+        </nav>
+        <div class="container text-center">
+                <h:form>
+                    <h:commandButton id="getInfoButton" value="Get Content Info"
+                    class="m-3 btn btn-primary text-white center-block" 
+                    action="#{contentManagedBean.details()}"/><br></br>
+                </h:form>
+            <h:outputText id="responseTimeText" 
+                value = "Content Fetched in: #{contentManagedBean.responseTime}
+                ms"></h:outputText>
+            <h:dataTable id="contentTable" 
+                    value = "#{contentManagedBean.contents}" var = "contents">
+
+                <h:column>    				
+                    <f:facet name = "header">Id</f:facet>    				
+                        #{contents.id}
+                </h:column>
+                <h:column>    				
+                    <f:facet name = "header">Name</f:facet>    				
+                        #{contents.name}
+                </h:column>
+
+                <h:column>
+                    <f:facet name = "header">Genre</f:facet>
+                        #{contents.genre}
+                </h:column>
+                <h:column>    				
+                    <f:facet name = "header">Type</f:facet>    				
+                        #{contents.type}
+                </h:column>
+                <h:column>
+                    <f:facet name = "header">Rating</f:facet>
+                        #{contents.rating}
+                </h:column>
+            </h:dataTable>
+            <h:form class="m-3">
+                <label for="subscribeInput">Enter Content Id's To Subscribe(Eg: 1,2)</label>
+                <h:inputText  value="#{contentManagedBean.subscriptionListInput}" id="subscriptionListInput" maxlength="30"/>
+                <h:commandButton value="Subscribe"  class="m-3 btn btn-primary text-white center-block" action="#{contentManagedBean.subscribe()}"/><br></br>
+            </h:form>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>    
+        <script type="text/javascript" 
+    src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script>
+        <script>$(document).ready(function () {
+                $('#contentTable').DataTable();
+            });
+            $('#getInfoButton').click(function(){
+                $('#responseTimeText').css("visibility","visible");
+            });
+        </script>
+    </h:body>
+</html>
+
